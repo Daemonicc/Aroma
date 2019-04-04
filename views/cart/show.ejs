@@ -1,0 +1,183 @@
+<% include ../partials/header %>
+<section class="cart_area">
+    <div class="container">
+        <div class="cart_inner">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Product</th>
+                            <th scope="col">Price</th>
+                            <th scope="col">Quantity</th>
+                            <th scope="col">Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% cart.forEach(function(cart){ %>
+                            <tr>
+                                    <td>
+                                        <div class="media">
+                                            <div class="d-flex">
+                                                <img src="<%=cart.products[0].image%>" alt="" style="width:70px; height: 70px">
+                                            </div>
+                                            <div class="media-body">
+                                                    <%=console.log(cart) %>
+                                                <p><%=cart.products[0].name %></p>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <h5><span>&#8358;</span><span id="price"><%=cart.products[0].price%></span></h5>
+                                    </td>
+                                    <td>
+                                        <div class="product_count">
+                                            <input type="number" name="qty" id="quantity" maxlength="12" value="<%=cart.quantity%>" title="Quantity:"
+                                                class="input-text qty">
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <h5><span>&#8358;</span><span id="totalprice" onchange="myvalue">0</span></h5>
+                                    </td>
+                                </tr>
+                        <% }) %>
+                        
+                        <tr class="bottom_button">
+                            <td>
+                                <a class="button" href="#">Update Cart</a>
+                            </td>
+                            <td>
+
+                            </td>
+                            <td>
+
+                            </td>
+                            <td>
+                                <div class="cupon_text d-flex align-items-center">
+                                    <input type="text" placeholder="Coupon Code">
+                                    <a class="primary-btn" href="#">Apply</a>
+                                    <a class="button" href="#">Have a Coupon?</a>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+
+                            </td>
+                            <td>
+
+                            </td>
+                            <td>
+                                <h5>Subtotal</h5>
+                            </td>
+                            <td>
+                                <h5><span>&#8358;</span><span id="subtotal">30000</span></h5>
+                            </td>
+                        </tr>
+                        <tr class="shipping_area">
+                            <td class="d-none d-md-block">
+
+                            </td>
+                            <td>
+
+                            </td>
+                            <td>
+                                <h5>Shipping</h5>
+                            </td>
+                            <td>
+                                <div class="shipping_box">
+                                    <ul class="list">
+                                        <li><a href="#">Flat Rate: $5.00</a></li>
+                                        <li><a href="#">Free Shipping</a></li>
+                                        <li><a href="#">Flat Rate: $10.00</a></li>
+                                        <li class="active"><a href="#">Local Delivery: $2.00</a></li>
+                                    </ul>
+                                    <h6>Calculate Shipping <i class="fa fa-caret-down" aria-hidden="true"></i></h6>
+                                    <select class="shipping_select">
+                                        <option value="1">Bangladesh</option>
+                                        <option value="2">India</option>
+                                        <option value="4">Pakistan</option>
+                                    </select>
+                                    <select class="shipping_select">
+                                        <option value="1">Select a State</option>
+                                        <option value="2">Select a State</option>
+                                        <option value="4">Select a State</option>
+                                    </select>
+                                    <input type="text" placeholder="Postcode/Zipcode">
+                                    <a class="gray_btn" href="#">Update Details</a>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="out_button_area">
+                            <td class="d-none-l">
+
+                            </td>
+                            <td class="">
+
+                            </td>
+                            <td>
+
+                            </td>
+                            <td>
+                                <div class="checkout_btn_inner d-flex align-items-center">
+                                    <a class="gray_btn" href="#">Continue Shopping</a>
+                                    <a class="primary-btn ml-2" href="#">Proceed to checkout</a>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+<!--================End Cart Area =================-->
+<script>
+
+var price = document.querySelectorAll('#price');
+var quantity = document.querySelectorAll('#quantity')
+var total =document.querySelectorAll('#totalprice')
+var subtotal = document.getElementById('subtotal')
+var s_total = 0; 
+console.log(price);
+console.log(quantity)
+
+
+
+
+for (let i = 0 ; i < price.length; i++  ){
+
+    var p  = Number(price[i].innerHTML);
+    console.log(p);
+    var q= Number(quantity[i].getAttribute('value'));
+    q = Number(quantity[i].value);
+    console.log(q)
+    var t=  p  *  q;
+    total[i].innerText = t;
+    quantity[i].addEventListener('input', function(){
+        q = Number(quantity[i].value);
+        p  = Number(price[i].innerHTML)
+        console.log(q)
+
+        var t=  p  *  q;
+        total[i].innerText = t;
+    })
+}
+
+for(let i = 0; i<total.length; i++){
+    s_total += Number(total[i].innerHTML)
+}
+
+subtotal.innerHTML = s_total;
+
+function myvalue(){
+    for( let i = 0; i<total.length; i++){
+        s_total += total[i]
+        subtotal.innerHTML = s_total;
+        
+    }
+}
+
+
+
+</script>
+<% include ../partials/footer %>

@@ -1,0 +1,91 @@
+<%  include ../partials/header %>
+
+<main class="site-main">
+<div class="container py-3">
+    <div class="row">
+        <div class="mx-auto col-sm-6">
+                    <!-- form user info -->
+                    <div class="card">
+                        <div class="card-header">
+                            <h4 class="mb-0">Product Info</h4>
+                        </div>
+                        <div class="card-body">
+                            <form class="form" role="form" autocomplete="on"  action="/product" method="POST">
+                                <div class="form-group row">
+                                    <label class="col-lg-3 col-form-label form-control-label">Name</label>
+                                    <div class="col-lg-9">
+                                        <input class="form-control" type="text" name="product[name]" placeholder="Product name">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-lg-3 col-form-label form-control-label">Quantity</label>
+                                    <div class="col-lg-9">
+                                        <input class="form-control" name="product[quantity]" type="number">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-lg-3 col-form-label form-control-label">Price</label>
+                                    <div class="col-lg-9">
+                                        <input class="form-control" name="product[price]" type="number">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-lg-3 col-form-label form-control-label">image</label>
+                                    <div class="col-lg-9">
+                                        <input class="form-control" name="product[image]" type="text" value="">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-lg-3 col-form-label form-control-label">Categories</label>
+                                    <div class="col-lg-9">
+                                        <select name="product[category]" class="form-control" size="0">
+                                            <option selected>Choose...</option>
+                                            <option value="Men">Men</option>
+                                            <option value="Women">Women</option>
+                                            <option value="Accessories">Accessories</option>
+                                            <option value="Footwear">Footwear</option>
+                                            <option value="BayItem">Bay Items</option>
+                                            <option value="Electronics">Electronics</option>
+                                            <option value="Food">Food</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-lg-3 col-form-label form-control-label">Avaliable</label>
+                                    <div class="col-lg-9">
+                                        <select name="product[avaliable]" class="form-control" size="0">
+                                            <option selected>Choose...</option>
+                                            <option value="true">In Stock</option>
+                                            <option value="false">Out of Stock</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-lg-3 col-form-label form-control-label">short Description</label>
+                                    <div class="col-lg-9">
+                                        <textarea name="product[bio]" class="d-flex col-lg-12"  rows="5"> </textarea>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-lg-3 col-form-label form-control-label">Description</label>
+                                    <div class="col-lg-9">
+                                        <textarea  name="product[description]" class="d-flex col-lg-12"  rows="10"> </textarea>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-lg-3 col-form-label form-control-label"></label>
+                                    <div class="col-lg-9">
+                                        <input type="reset" class="btn btn-danger" value="Reset">
+                                        <input type="submit" class="btn btn-success" value="Submit">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <!-- /form user info -->
+        </div>
+    </div>
+</div>
+</main>
+
+<%  include ../partials/footer %>
