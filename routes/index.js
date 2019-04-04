@@ -10,7 +10,11 @@ const { check, validationResult } = require('express-validator/check');
 
 
 router.get('/',middleware.isLoggedIn, function(req, res){
-    res.render('index');
+    Product.find({})
+            .limit(8)
+            .exec(function(err, product){
+                res.render('index', {product: product})
+            })
 })
 
 
