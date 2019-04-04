@@ -63,5 +63,5 @@ app.use(require('express-session')({
 })
 
 app.listen(process.env.PORT || 8080, process.env.IP, function(){
-    console.log("The YelpCamp Server Has Started!");
+    console.log("Server Has Started!");
  });
